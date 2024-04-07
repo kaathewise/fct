@@ -1,6 +1,6 @@
-## Flight Control Tower (test project)
+# Flight Control Tower (test project)
 
-### Running
+## Running
 
 `./gradlew build` for building and running tests. 
 
