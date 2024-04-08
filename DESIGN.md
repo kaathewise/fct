@@ -51,6 +51,12 @@ Now if we want something efficient for a large number of data points, we have a 
 
 In the end, I chose to implement a version of the Fenwick Tree, as I didn't want to invest too much time in it. An important note there is that the updates are actually `O(log V)`, which in the case of current epoch seconds means circa 30 iterations.
 
+## Testing
+
+Unit/Functional tests for `InMemoryPlanesImpl` are missing due to a lack of time. `InMemoryPlanesImpl` is currently only covered by the functional tests for the whole application.
+
+Should also add tests for idempotency of removal and insertion of events.
+
 ## Input format
 
 Although not asked explicitly, I would like to leave some comments on the input format, as I would do if I faced this problem at work.
