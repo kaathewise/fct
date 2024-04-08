@@ -40,16 +40,16 @@ Now, thinking about performance, although not strictly necessary for the problem
 
 The shortest solution I implemented, with a use of a `TreeMap` is even less efficient than it has to be -- it takes `O(N)` to aggregate the fuel, but still takes `O(log N)` to update, compared, say, to a simple `List` which would only need `O(1)`. Nevertheless, I chose `TreeMap`, because the code is slightly shorter and easier to understand.
 
-Now if we want something efficient for a large number of data points, we have a few options, most notably augmented BSTs and the Fenwick Tree, all allowing for `O(log N)` inserts and reads, with a few caveats. There is also an important general optimisation idea -- *if we know that out-of-order events are pretty rare, we can store and aggregate them separately, greatly improving write performance*. The ratio between writes and reads can also affect the implementation significantly.
+Now if we want something efficient for a large number of data points, we have a few options, most notably augmented BSTs and the Fenwick Tree, allowing for "logarithmic" inserts and reads, with a few caveats. There is also an important general optimisation idea -- *if we know that out-of-order events are pretty rare, we can store and aggregate them separately, greatly improving write performance*. The ratio between writes and reads can also affect the implementation significantly.
 
 * BSTs, in particular, AVL/RB Trees.
   * **Pros:** most efficient, true worst-case `O(log N)`, AVL slightly better in speed, RB somewhat better in memory
-  * **Cons:** most amount of code, no well-established augmentable implementation for Kotlin/JVM
+  * **Cons:** significant amount of code to write ant to maintain, no well-established augmentable implementation for Kotlin/JVM
 * Fenwick Tree.
-  * **Pros:** very short and easy to write, possible to make truly `O(log N)` (on average)
-  * **Cons:** unfortunately, we can only achieve average `O(log N)` because of the average `O(1)` of the underlying `HashMap` implementation. Swapping `HashMap` for a `TreeMap` would give us `O(log^2 N)` worst (and average) case. We would also need to implement a careful "extension" of the tree to the right and to the left to achieve those asymptotically optimal results.
+  * **Pros:** very short and easy to write, possible to make `O(log R)`, where `R` is the range of possible keys (on average)
+  * **Cons:** unfortunately, we can only achieve average `O(log R)` because of the average `O(1)` of the underlying `HashMap` implementation. Swapping `HashMap` for a `TreeMap` would give us `O(log R * log N)` worst (and average) case. We would also need to implement a careful "extension" of the tree to the right and to the left to achieve those asymptotically optimal results.
 
-In the end, I chose to implement a version of the Fenwick Tree, as I didn't want to invest too much time in it. An important note there is that the updates are actually `O(log V)`, which in the case of current epoch seconds means circa 30 iterations.
+In the end, I chose to implement a version of the Fenwick Tree, as I didn't want to invest too much time in it. An important note there is that the updates are actually `O(log V)`, where `V` is the maximum key, which in the case of current epoch seconds means circa 30 iterations.
 
 ## Testing
 
