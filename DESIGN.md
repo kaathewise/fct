@@ -40,7 +40,7 @@ Now, thinking about performance, although not strictly necessary for the problem
 
 The shortest solution I implemented, with a use of a `TreeMap` is even less efficient than it has to be -- it takes `O(N)` to aggregate the fuel, but still takes `O(log N)` to update, compared, say, to a simple `List` which would only need `O(1)`. Nevertheless, I chose `TreeMap`, because the code is slightly shorter and easier to understand.
 
-Now if we want something efficient for a large number of data points, we have a few options, most notably augmented BSTs and the Fenwick Tree, all of them allow for `O(log N)` inserts and reads, with a few caveats. There is also an important general optimisation idea -- *if we know that out-of-order events are pretty rare, we can store and aggregate them separately, greatly improving write performance*. The ratio between writes and reads can also affect the implementation significantly.
+Now if we want something efficient for a large number of data points, we have a few options, most notably augmented BSTs and the Fenwick Tree, all allowing for `O(log N)` inserts and reads, with a few caveats. There is also an important general optimisation idea -- *if we know that out-of-order events are pretty rare, we can store and aggregate them separately, greatly improving write performance*. The ratio between writes and reads can also affect the implementation significantly.
 
 * BSTs, in particular, AVL/RB Trees.
   * **Pros:** most efficient, true worst-case `O(log N)`, AVL slightly better in speed, RB somewhat better in memory
