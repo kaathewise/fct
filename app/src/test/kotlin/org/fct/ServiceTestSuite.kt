@@ -10,16 +10,15 @@ import org.fct.persistence.impl.FenwickPlaneData
 import org.fct.persistence.impl.InMemoryPlanesImpl
 import org.fct.persistence.impl.PlaneData
 import org.fct.persistence.impl.TreeMapPlaneData
-import org.fct.persistence.impl.planeDataTests
 
 class ServiceTestSuite : FreeSpec({
-    include(planeDataTests("FenwickPlaneData", FenwickPlaneData()))
-    include(planeDataTests("TreeMapPlaneData", TreeMapPlaneData()))
+    include(serviceTests("FenwickPlaneData", ::FenwickPlaneData))
+    include(serviceTests("TreeMapPlaneData", ::TreeMapPlaneData))
 })
 
-fun serviceTests(name: String, planeDataImpl: PlaneData) = freeSpec {
+fun serviceTests(name: String, planeDataImpl: () -> PlaneData) = freeSpec {
     "Service with $name should" - {
-        val service = Service(InMemoryPlanesImpl {planeDataImpl}, Parser())
+        val service = Service(InMemoryPlanesImpl(planeDataImpl), Parser())
 
         "return null on blank or empty line" {
             service.handleLine("  ").shouldBeNull()
