@@ -44,6 +44,7 @@ fun planeDataTests(name: String, instance: PlaneData) = freeSpec {
 
         "delete events" {
             instance.insertEvent(Instant.ofEpochSecond(100L), Event.Type.LAND, 100)
+            instance.insertEvent(Instant.ofEpochSecond(200L), Event.Type.RE_FUEL, 200)
             instance.insertEvent(Instant.ofEpochSecond(300L), Event.Type.TAKE_OFF, 300)
             instance.insertEvent(Instant.ofEpochSecond(400L), Event.Type.LAND, 400)
             instance.deleteEvent(Instant.ofEpochSecond(200L))

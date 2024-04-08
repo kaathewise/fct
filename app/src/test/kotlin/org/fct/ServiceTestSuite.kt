@@ -6,7 +6,6 @@ import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldBeEmpty
 import io.kotest.matchers.string.shouldContain
-import org.fct.persistence.Planes
 import org.fct.persistence.impl.FenwickPlaneData
 import org.fct.persistence.impl.InMemoryPlanesImpl
 import org.fct.persistence.impl.PlaneData
