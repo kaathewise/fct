@@ -46,11 +46,10 @@ Now if we want something efficient for a large number of data points, we have a 
   * **Pros:** most efficient, true worst-case `O(log N)`, AVL slightly better in speed, RB somewhat better in memory
   * **Cons:** most amount of code, no well-established augmentable implementation for Kotlin/JVM
 * Fenwick Tree.
-  * **Pros:** very short and easy to write, possible to make truly `O(log N)`
-  * **Cons:** true `O(log N)` implementation requires careful "extension" of the tree to the right and to the left.
+  * **Pros:** very short and easy to write, possible to make truly `O(log N)` (on average)
+  * **Cons:** unfortunately, we can only achieve average `O(log N)` because of the average `O(1)` of the underlying `HashMap` implementation. Swapping `HashMap` for a `TreeMap` would give us `O(log^2 N)` worst (and average) case. We would also need to implement a careful "extension" of the tree to the right and to the left to achieve those asymptotically optimal results.
 
-In the end, I chose to implement a version of the Fenwick Tree, as I didn't want to invest too much time in it. An important note there is that the updates are actually `O(log V)`, which
-in the case of current epoch seconds means circa 30 iterations.
+In the end, I chose to implement a version of the Fenwick Tree, as I didn't want to invest too much time in it. An important note there is that the updates are actually `O(log V)`, which in the case of current epoch seconds means circa 30 iterations.
 
 ## Input format
 
