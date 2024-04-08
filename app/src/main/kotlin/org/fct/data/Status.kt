@@ -22,8 +22,8 @@ data class Status(
         AWAITING_TAKEOFF("Awaiting-Takeoff"),
         IN_FLIGHT("In-Flight");
 
-        override fun toString() : String = displayName
+        override fun toString() = displayName
     }
 
-    override fun toString() : String = "$planeId $flightStatus $fuel"
+    override fun toString() = "$planeId $flightStatus $fuel"
 }

@@ -30,7 +30,7 @@ class Parser {
         }
     }
 
-    private fun parseEvent(fields: List<String>): Event =
+    private fun parseEvent(fields: List<String>) =
             Event(
                     key = Event.Key(planeId = fields[0], timestamp = parseInstantField(fields[5])),
                     planeModel = fields[1],
@@ -40,7 +40,7 @@ class Parser {
                     fuelDelta = fields[6].toInt(),
             )
 
-    private fun parseEventKey(fields: List<String>): Event.Key =
+    private fun parseEventKey(fields: List<String>) =
             Event.Key(
                     planeId = fields[0],
                     timestamp = parseInstantField(fields[1])
