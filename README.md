@@ -7,3 +7,7 @@
 `./gradlew run --console=plain < sample.in` for processing a log file.
 
 `./gradlew run --console=plain` for the line-by-line interface.
+
+## Design Notes
+
+[See Design Notes here](./DESIGN.md).
