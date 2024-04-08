@@ -22,7 +22,7 @@ interface Planes {
 
     /**
      * Returns an unordered list of planes' [Status]es taken at [timestamp] given. The list contains
-     * only planes for which we have at least one data point for before or at the given moment.
+     * only planes for which we have at least one data point before or at the given moment.
      */
     fun getStatus(timestamp: Instant): List<Status>
 
